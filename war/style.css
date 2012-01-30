@@ -1,0 +1,42 @@
+body {
+	padding: 0;
+	margin: 0;	
+	font-size: 12px;
+	font-family: helvetica, arial;
+}
+.header {
+	padding: 20px;
+	background-color: #F0F0F0;
+	border-bottom: 1px solid #CCC;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;	
+}
+
+ul {
+	margin: 0;
+	padding: 20px;
+}
+
+ul li {
+	list-style-type: none;	
+	margin-top: 20px;
+}
+
+.tweet, .image {
+	float: left;	
+}
+
+.tweet {
+	width: 300px;	
+}
+
+.image {
+	margin-left: 20px;	
+}
+
+.clear {
+	clear: both;	
+}
