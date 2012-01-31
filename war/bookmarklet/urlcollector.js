@@ -16,7 +16,14 @@ function trotzig_URLCollector() {
 		xdomain.type='text/javascript';
 //		var host = 'http://localhost:8888';
 		var host = 'http://faces.trotzigprojects.appspot.com';
-		xdomain.src = host + '/collect?callback=trotzig_URLCollectorSuccess&url=' + encodeURIComponent(url);
+		xdomain.src = [
+			               host, 
+			               '/collect?callback=trotzig_URLCollectorSuccess&url=', 
+			               encodeURIComponent(url),
+			               '&account=', 
+			               trotzig_collectForAccount
+		               ].join('');
+		
 		document.getElementsByTagName('head')[0].appendChild(xdomain);
 	};
 
