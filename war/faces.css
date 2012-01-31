@@ -1,15 +1,53 @@
 body {
 	font-family: helvetica, arial;
 	padding: 0;
-	margin: 0;	
+	margin: 0;
+	font-size: 12px;	
 }
+.popup a {
+	text-decoration: none;
+	color: #4169E1;
+}
+
+.popup h3 {
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;	
+}
+
 .popup {
+	opacity: 0;
+	display: none;
 	position: absolute;
 	padding: 10px;
 	background-color: #F0F0F0;
 	border: 1px solid #CCC;	
+	top: 0;
+	left: 50px; 	
+	z-index: 99;
+	min-width: 150px;
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;
+	
+	-webkit-transition-property: opacity;
+    -webkit-transition-duration: 300ms;
+    -webkit-transition-timing-function: ease-in;
+    -webkit-transition-delay: 100ms;
 }
 
 img {
 	float: left;	
+}
+
+
+.face {
+	float: left;	
+	position: relative;
+}
+
+.face:hover .popup {
+	opacity: 1;
+	display: block;
 }

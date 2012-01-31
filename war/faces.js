@@ -12,14 +12,8 @@ function Faces() {
 			self.connectToFacebook();
 		});
 		facesWrapper = $('<div/>', {'class': 'faces'});
-		popup = $('<div/>', {'class': 'popup'});
-		var link = $('<a/>');
-		popup.append(link);
-		popup.hide();
-		popup.mouseleave(function() {
-			popup.hide();
-		});
-		$('body').append(button).append(facesWrapper).append(popup);
+		
+		$('body').append(button).append(facesWrapper);
 	};
 	this.connectToFacebook = function() {
 		FB.login(function(response) {
@@ -41,29 +35,27 @@ function Faces() {
 		}
 	};
 	
-	this.showPopup = function(facebookUser) {
-		popup.find('a').text(facebookUser.name).attr('href', 'http://www.facebook.com/profile.php?id=' + encodeURIComponent(facebookUser.id));
-		var relativeTo = $('.fb-' + facebookUser.id);
-		var relativeOffset = relativeTo.offset();
-		var width = relativeTo.width();
-		popup.css('top', relativeOffset.top);
-		popup.css('left', relativeOffset.left + width);
-		popup.show();
-
+	this.createPopup = function(facebookUser) {
+		var popup = $('<div/>', {'class': 'popup'});
+		var header = $('<h3/>');
+		header.text(facebookUser.name);
+		
+		var link = $('<a/>', {href: 'http://www.facebook.com/profile.php?id=' + encodeURIComponent(facebookUser.id)});
+		link.text('Facebook account');
+		popup.append(header).append(link);
+		return popup;
 	};
 	
 	
 	this.showFace = function(facebookUser) {
 		var fbId = encodeURIComponent(facebookUser.id);
-//		var wrapper = $('<div>', {'class': 'face'})
+		var wrapper = $('<div>', {'class': 'face'});
 		var img = $('<img/>', {src: 'http://graph.facebook.com/'+fbId+'/picture'});
 		img.addClass('fb-' + fbId);
-		img.hover(function(e) {
-			self.showPopup(facebookUser);
-		}, function(e) {
-			
-		});
-		facesWrapper.append(img);
+		wrapper.append(img);
+		wrapper.append(self.createPopup(facebookUser));
+		facesWrapper.append(wrapper);
+		
 	};
 	
 	
