@@ -20,6 +20,8 @@ function trotzig_URLCollector() {
 			               host, 
 			               '/collect?callback=trotzig_URLCollectorSuccess&url=', 
 			               encodeURIComponent(url),
+			               '&title=',
+			               encodeURIComponent(document.title),
 			               '&account=', 
 			               trotzig_collectForAccount
 		               ].join('');
